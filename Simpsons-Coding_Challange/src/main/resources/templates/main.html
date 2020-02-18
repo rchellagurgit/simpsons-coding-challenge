@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<link rel="shortcut icon" href="#" />
+
+<style type="text/css">
+body {
+	margin: 30px;
+}
+
+.my-container {
+	border: 1px solid black;
+}
+
+.my-row {
+	border: 1px solid black;
+}
+
+.my-col {
+	border: 1px;
+}
+</style>
+
+</head>
+<body>
+	<div class="container my-container">
+
+		<div class="row my-row">
+			<div class="col-md-6  my-col">
+				<h1>Search Character</h1>
+			</div>
+			<div class="col-md-6  my-col">
+				<h1>Search Result</h1>
+			</div>
+		</div>
+		<div class="row my-row">
+			<div class="col-md-6  my col">
+				<form class="form-horizontal" id="search-form">
+					<div class="form-group form-group-lg">
+						<label class="col-sm-2 control-label">First Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="SearchfirstName" />
+
+						</div>
+						<label class="col-sm-2 control-label">Last Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="SearchlastName" />
+
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button type="submit" id="bth-search"
+								class="btn btn-primary btn-lg">Search</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-6  my col">
+				<div id="search-result" class="col-md-8  my-col"></div>
+			</div>
+		</div>
+
+		<h1 class="text-center">Character & Quotes</h1>
+
+		<div style="padding: 20px;"></div>
+
+		<div class="panel panel-default">
+
+			<div class="panel-body">
+
+				<div class="fullDataTable"></div>
+
+			</div>
+
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading"></div>
+
+			<div class="panel-body">
+
+				<p></p>
+				<div class="post_msg"></div>
+
+			</div>
+		</div>
+
+	</div>
+	<script type="text/javascript" src="webjars/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

@@ -26,14 +26,14 @@ $(document)
 					$
 							.ajax({
 								type : "GET",
-								url : "/api/getAllCharaters",
+								url : "/api/getAllSimpsonCharacters",
 								success : function(simpsonsCharacters) {
 									console.log("SUCCESS : ",
-											simpsonsCharacters);
+											simpsonsCharacters.msg);
 
 									$
 											.each(
-													simpsonsCharacters,
+													simpsonsCharacters.result,
 													function(i,
 															simpsonsCharacter) {
 
@@ -423,7 +423,7 @@ $(document)
 								timeout : 600000,
 								success : function(
 										data) {
-									console.log("SUCCESS : ",data.msg);
+									console.log("Sucessful Adding Data!");
 									
 									var tbl = '';
 									tbl +='<a href="#" class="btn btn-link btn_edit" row_id="'+row_id+'" > Edit</a>';

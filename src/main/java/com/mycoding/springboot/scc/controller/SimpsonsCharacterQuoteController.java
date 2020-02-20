@@ -33,11 +33,12 @@ public class SimpsonsCharacterQuoteController {
 		this.simpsonsCharacterQuoteService = simpsonsCharacterQuoteService;
 	}
 
-	@GetMapping("/api/getAllCharaters")
-	public List getAllUsers() {
-
-		List<SimpsonsCharacter> simpsonsCharacters = simpsonsCharacterQuoteService.getAllSimpsonCharacter();
-		return simpsonsCharacters;
+	@GetMapping("/api/getAllSimpsonCharacters")
+	public ResponseEntity<?> getAllSimpsonCharacters() {
+		AjaxResponseBody result = new AjaxResponseBody();
+		result.setResult(simpsonsCharacterQuoteService.getAllSimpsonCharacters());
+		result.setMsg("success");
+		return ResponseEntity.ok(result);
 	}
 
 	@GetMapping("/{id}")
@@ -47,9 +48,11 @@ public class SimpsonsCharacterQuoteController {
 	}
 
 	@PostMapping("/api/save")
-	public List createOrUpdateSimpsonsCharacter(@Valid @RequestBody SimpsonsCharacter simpsonsCharacter) {
-		List<SimpsonsCharacter> simpsonsCharacters = simpsonsCharacterQuoteService.saveNewCharacter(simpsonsCharacter);
-		return simpsonsCharacters;
+	public ResponseEntity<?> createOrUpdateSimpsonsCharacter(@Valid @RequestBody SimpsonsCharacter simpsonsCharacter) {
+		AjaxResponseBody result = new AjaxResponseBody();
+		result.setResult(simpsonsCharacterQuoteService.saveCharacterQuote(simpsonsCharacter));
+		result.setMsg("success");
+		return ResponseEntity.ok(result);
 
 	}
 
@@ -57,12 +60,11 @@ public class SimpsonsCharacterQuoteController {
 	public HttpStatus deleteSimpsonsCharacterById(@PathVariable("id") Long id) {
 		AjaxResponseBody result = new AjaxResponseBody();
 		result.setMsg(simpsonsCharacterQuoteService.deleteSimpsonsCharacterById(id));
-	   return HttpStatus.OK;
+		return HttpStatus.OK;
 	}
 
 	@PostMapping("/api/search")
-	public ResponseEntity<?> getSearchResultViaAjax(@Valid @RequestBody SearchCriteria search, Errors errors) {
-
+	public ResponseEntity<?> getSearchResult(@Valid @RequestBody SearchCriteria search, Errors errors) {
 		AjaxResponseBody result = new AjaxResponseBody();
 
 		// If error, just return a 400 bad request, along with the error message
@@ -77,12 +79,12 @@ public class SimpsonsCharacterQuoteController {
 		List<SimpsonsCharacter> simpsonsCharacters = simpsonsCharacterQuoteService
 				.findByFirstNameOrLastName(search.getFirstName(), search.getLastName());
 		if (simpsonsCharacters.isEmpty()) {
-			result.setMsg("no Simpsons Character found!");
+			result.setMsg("No Simpsons Character found!");
 		} else {
-			result.setMsg("success");
+			result.setMsg("Simpsons Character found!");
 		}
 		result.setResult(simpsonsCharacters);
-	
+
 		return ResponseEntity.ok(result);
 
 	}

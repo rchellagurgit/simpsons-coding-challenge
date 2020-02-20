@@ -20,7 +20,7 @@ public class SimpsonsCharacterQuoteService {
 	@Autowired
 	SimpsonCharacterRepository repository;
 
-	public List<SimpsonsCharacter> getAllSimpsonCharacter() {
+	public List<SimpsonsCharacter> getAllSimpsonCharacters() {
 
 		simpsonCharacters = repository.findAll();
 
@@ -35,16 +35,6 @@ public class SimpsonsCharacterQuoteService {
 		return simpsonsCharacter.get();
 	}
 
-	/*
-	 * public List<SimpsonsCharacter> findByFirstNameOrLastName(String firstName) {
-	 * 
-	 * List<SimpsonsCharacter> result = simpsonCharacters.stream() .filter(x ->
-	 * x.getFirstName().equalsIgnoreCase(firstName)).collect(Collectors.toList());
-	 * 
-	 * return result;
-	 * 
-	 * }
-	 */
 
 	public List<SimpsonsCharacter> findByFirstNameOrLastName(String firstName, String lastName) {
 
@@ -83,32 +73,10 @@ public class SimpsonsCharacterQuoteService {
 
 	}
 
-	public List<SimpsonsCharacter> saveNewCharacter(SimpsonsCharacter entity) {
-
-		//System.out.println("createOrUpdateSimpsonsCharacter entity ID="+entity.getId());
-		ArrayList<SimpsonsCharacter> newList = new ArrayList<SimpsonsCharacter>(1);
-	
-		//Optional<SimpsonsCharacter> simpsonsCharacter = repository.findById(entity.getId());
-
-		/*
-		 * if (simpsonsCharacter.isPresent()) {
-		 * System.out.println("createOrUpdateSimpsonsCharacter isPresent");
-		 * SimpsonsCharacter newEntity = simpsonsCharacter.get();
-		 * newEntity.setFirstName(entity.getFirstName());
-		 * newEntity.setLastName(entity.getLastName());
-		 * newEntity.setPicture(entity.getPicture()); newEntity.setAge(entity.getAge());
-		 * 
-		 * newEntity = repository.save(newEntity);
-		 * 
-		 * } else {
-		 * System.out.println("createOrUpdateSimpsonsCharacter isPresent else"); entity
-		 * = repository.save(entity); }
-		 */
-		entity = repository.save(entity);
-		newList.add(entity);
-
-		return newList;
-
+	public List<SimpsonsCharacter> saveCharacterQuote(SimpsonsCharacter entity) {
+		List<SimpsonsCharacter> result = new ArrayList<SimpsonsCharacter>();
+		result.add(repository.save(entity));
+		return result;
 	}
 
 	public String deleteSimpsonsCharacterById(Long id) {
